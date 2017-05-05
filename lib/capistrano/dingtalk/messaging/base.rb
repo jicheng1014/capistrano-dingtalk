@@ -1,7 +1,6 @@
 require 'forwardable'
 require 'json'
 require_relative 'helpers'
-require_relative 'text'
 
 module Capistrano::Dingtalk::Messaging
   class Base
@@ -11,7 +10,7 @@ module Capistrano::Dingtalk::Messaging
 
     def initialize(info)
       @info = info || {}
-     end
+    end
 
     def message_for_updating
       "#{deployer} has started deploying branch #{branch} of #{application} to #{stage}"

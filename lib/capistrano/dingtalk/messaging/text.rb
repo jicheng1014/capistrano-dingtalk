@@ -1,3 +1,5 @@
+require_relative 'base'
+
 module Capistrano::Dingtalk::Messaging
   class Text < Base
     def build_hash(action)
