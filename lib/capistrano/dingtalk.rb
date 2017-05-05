@@ -3,6 +3,7 @@ require_relative "dingtalk/version"
 require_relative "dingtalk/Messaging/base"
 require_relative "dingtalk/Messaging/text"
 require 'forwardable'
+require 'byebug'
 
 load File.expand_path("../tasks/dingtalk.rake", __FILE__)
 
@@ -12,6 +13,7 @@ module Capistrano
     def_delegators :env, :fetch, :run_locally
 
     def initialize(env)
+      byebug
       @env = env
       @config = fetch(:dingtalk_info, {})
       # TODO: supports more message categories
