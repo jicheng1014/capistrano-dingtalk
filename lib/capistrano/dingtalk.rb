@@ -13,7 +13,6 @@ module Capistrano
     def_delegators :env, :fetch, :run_locally
 
     def initialize(env)
-      byebug
       @env = env
       @config = fetch(:dingtalk_info, {})
       # TODO: supports more message categories
@@ -27,7 +26,9 @@ module Capistrano
     end
 
     def run(action)
+      byebug
       run_locally do
+        byebug
         json = @message.build_msg_json(action)
         send_msg_to_ding_talk(@config[:url], json)
       end
