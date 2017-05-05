@@ -12,6 +12,7 @@ module Capistrano
     extend Forwardable
     def_delegators :env, :fetch, :run_locally
 
+    attr_reader :message
     def initialize(env)
       @env = env
       @config = fetch(:dingtalk_info, {})
@@ -26,7 +27,7 @@ module Capistrano
     end
 
     def run(action)
-      byebug
+      local = self
       run_locally do
         byebug
         json = @message.build_msg_json(action)
