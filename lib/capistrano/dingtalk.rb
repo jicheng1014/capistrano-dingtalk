@@ -2,7 +2,7 @@ require 'rest-client'
 require "capistrano/dingtalk/version"
 require 'forwardable'
 
-# load File.expand_path("../tasks/dingtalk.rake", __FILE__)
+load File.expand_path("../tasks/dingtalk.rake", __FILE__)
 
 module Capistrano
   class Dingtalk
