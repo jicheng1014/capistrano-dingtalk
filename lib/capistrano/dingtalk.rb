@@ -13,13 +13,13 @@ module Capistrano
       @env = env
       @config = fetch(:dingtalk_info, {})
       # TODO: supports more message categories
-      category = conffig[:category] || 'text'
+      category = @config[:category] || 'text'
       klass = Object
       case category
       when 'text'
         klass = Dingtalk::Messaging::Text
       end
-      @message = klass.new config
+      @message = klass.new @config
     end
 
     def run(action)
