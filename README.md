@@ -1,6 +1,6 @@
 # Capistrano::Dingtalk
 
-send msg to ding talk rebot when capistrano works.
+send msg to ding talk webhook rebot when capistrano works.
 
 ## Requirements
 
@@ -24,7 +24,7 @@ Require the library in your application's Capfile:
 
 ## configuration
 
-1. get dingtalk webhook url
+1. get dingtalk webhook url. 
 2. add config to `config/deploy.rb` or the stages files.
 
 ```ruby
@@ -35,6 +35,11 @@ set :dingtalk_info, {
 }
 ```
 
+if you have any question, contact me by Wechat (name: atpking).
+
+## Thanks
+
+Thanks to project `slackistrano` which could send msg to `slack.com`
 
 ## Development
 
