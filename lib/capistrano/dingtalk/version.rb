@@ -1,5 +1,5 @@
 module Capistrano
-  module Dingtalk
+  class Dingtalk
     VERSION = "0.1.0"
   end
 end
