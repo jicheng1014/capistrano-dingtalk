@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.0"
 
   spec.add_dependency "capistrano", ">= 3.5.0"
-  spec.add_dependency "rest-client", ">= 2.0"
+  spec.add_dependency "rest-client", ">= 1.5"
 end
