@@ -12,16 +12,25 @@ module Capistrano
     def initialize(env)
       @env = env
       @config = fetch(:dingtalk_info, {})
+      # TODO: supports more message categories
+      category = conffig[:category] || 'text'
+      klass = Object
+      case category
+      when 'text'
+        klass = Dingtalk::Messaging::Text
+      end
+      @message = klass.new config
     end
 
     def run(action)
-      run_locally {
-
-      }
+      run_locally do
+        json = @message.build_msg_json(action)
+        send_msg_to_ding_talk(@config[:url], json)
+      end
     end
 
-    def send_msg_to_ding_talk(url, dict)
-      RestClient.post(url, dict)
+    def send_msg_to_ding_talk(url, json)
+      RestClient.post(url, json)
     rescue => e
       warn "DINGTALK ERROR: #{e.message}\n #{e.inspect}"
     end
