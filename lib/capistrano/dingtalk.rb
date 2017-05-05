@@ -29,15 +29,15 @@ module Capistrano
     def run(action)
       local = self
       run_locally do
-        byebug
         json = local.message.build_msg_json(action)
         local.send(:send_msg_to_ding_talk, json)
+        local.info "send action #{action} to dingtalk"
       end
     end
 
     def send_msg_to_ding_talk(json)
       url = @config[:url]
-      RestClient.post(url, json)
+      RestClient.post(url, json, content_type: :json, accept: :json)
     rescue => e
       warn "DINGTALK ERROR: #{e.message}\n #{e.inspect}"
     end
