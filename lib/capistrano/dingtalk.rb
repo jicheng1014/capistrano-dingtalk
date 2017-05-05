@@ -3,7 +3,6 @@ require_relative "dingtalk/version"
 require_relative "dingtalk/Messaging/base"
 require_relative "dingtalk/Messaging/text"
 require 'forwardable'
-require 'byebug'
 
 load File.expand_path("../tasks/dingtalk.rake", __FILE__)
 
