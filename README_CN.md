@@ -1,46 +1,46 @@
 # Capistrano::Dingtalk
 
-send msg to ding talk webhook rebot when capistrano works.
+使用capistrano 的时候向dingtalk 发消息
 
-## Requirements
+## 依赖
 
 - Capistrano >= 3.5.0
 - Ruby >= 2.0
 
 
-## Installation
+## 安装
 
-Add this line to your application's Gemfile:
+在 Gemfile 中添加
 
 ```ruby
 gem 'capistrano-dingtalk'
 ```
 
-Require the library in your application's Capfile:
+在Capfile 中添加
 
  ```ruby
  require 'capistrano/dingtalk'
  ```
 
-## Configuration
+## 配置
 
-1. get dingtalk webhook url.
-2. add config to `config/deploy.rb` or the stages files.
+1. 去钉钉拿到webhook 机器人的地址
+2. 向 `config/deploy.rb` 或者具体的环境文件里加以下配置
 
 ```ruby
 set :dingtalk_info, {
-  category: "text",  # option, selection:  text, markdown, default is text
-  url: 'https://oapi.dingtalk.com/robot/send?access_token=abcedf012345678', # change to your url
-  at_mobiles: [], # option
-  at_all: false # option
+  category: "text",  # 可选， 有 text  markdown 两种模式   ps 钉钉的markdown 好像只对手机端有效（2017年05月05日）
+  url: 'https://oapi.dingtalk.com/robot/send?access_token=abcedf012345678', # 换成你的webhook 地址
+  at_mobiles: [], # 可选，填 你要 at 的人的手机号
+  at_all: false # 可选， 是否 at 所有人
 }
 ```
 
-if you have any question, contact me by Wechat (name: atpking).
+如果有使用中的问题，欢迎提 issue 或者通过微信(atpking)与我取得联系
 
-## Thanks
+## 感谢
 
-Thanks to project `slackistrano` which could send msg to `slack.com`
+ `slackistrano` 项目。
 
 ## Development
 
