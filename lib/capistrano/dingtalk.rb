@@ -30,12 +30,13 @@ module Capistrano
       local = self
       run_locally do
         byebug
-        json = @message.build_msg_json(action)
-        send_msg_to_ding_talk(@config[:url], json)
+        json = local.message.build_msg_json(action)
+        local.send(:send_msg_to_ding_talk, json)
       end
     end
 
-    def send_msg_to_ding_talk(url, json)
+    def send_msg_to_ding_talk(json)
+      url = @config[:url]
       RestClient.post(url, json)
     rescue => e
       warn "DINGTALK ERROR: #{e.message}\n #{e.inspect}"

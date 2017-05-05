@@ -43,7 +43,7 @@ module Capistrano::Dingtalk::Messaging
       at = {}
       at["at"] = @info[:at_all]
       at["atMobiles"] = @info[:at_mobiles]
-      at.compact
+      at
     end
 
     def build_hash(action)
