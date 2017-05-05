@@ -1,6 +1,5 @@
 module Capistrano::Dingtalk::Messaging
   module Helpers
-
     def username
       'cap-dingtalk-bot'
     end
@@ -27,8 +26,7 @@ module Capistrano::Dingtalk::Messaging
     # Examples: 21-18:26:30, 15:28:37, 01:14
     #
     def elapsed_time
-      `ps -p #{$$} -o etime=`.strip
+      `ps -p #{$PROCESS_ID} -o etime=`.strip
     end
-
   end
 end
