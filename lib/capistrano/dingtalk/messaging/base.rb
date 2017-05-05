@@ -1,6 +1,7 @@
 require 'forwardable'
 require 'json'
 require_relative 'helpers'
+require_relative 'text'
 
 module Capistrano::Dingtalk::Messaging
   class Base
