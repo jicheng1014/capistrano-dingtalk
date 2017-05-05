@@ -16,12 +16,7 @@ module Capistrano
       @env = env
       @config = fetch(:dingtalk_info, {})
       # TODO: supports more message categories
-      category = @config[:category] || 'text'
-      klass = Object
-      case category
-      when 'text'
-        klass = ::Capistrano::Dingtalk::Messaging::Text
-      end
+      klass = message_klass
       @message = klass.new @config
     end
 
@@ -37,6 +32,18 @@ module Capistrano
     def send_msg_to_ding_talk(json)
       url = @config[:url]
       RestClient.post(url, json, content_type: :json, accept: :json)
+    end
+
+    def message_klass
+      category = @config[:category] || 'text'
+      klass = Object
+      case category
+      when 'text'
+        klass = ::Capistrano::Dingtalk::Messaging::Text
+      when 'markdown'
+        klass = ::Capistrano::Dingtalk::Messaging::Markdown
+      end
+      klass
     end
   end
 end

@@ -24,11 +24,12 @@ Require the library in your application's Capfile:
 
 ## configuration
 
-1. get dingtalk webhook url. 
+1. get dingtalk webhook url.
 2. add config to `config/deploy.rb` or the stages files.
 
 ```ruby
 set :dingtalk_info, {
+  category: "text"  # option, selection:  text, markdown, default is text
   url: 'https://oapi.dingtalk.com/robot/send?access_token=abcedf012345678' # change to your url
   at_mobiles: [], # option
   at_all: false # option
