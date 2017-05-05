@@ -1,8 +1,8 @@
 require 'rest-client'
 require_relative "dingtalk/version"
-require_relative "dingtalk/Messaging/base"
-require_relative "dingtalk/Messaging/text"
-require_relative "dingtalk/Messaging/markdown"
+require_relative "dingtalk/messaging/base"
+require_relative "dingtalk/messaging/text"
+require_relative "dingtalk/messaging/markdown"
 require 'forwardable'
 
 load File.expand_path("../tasks/dingtalk.rake", __FILE__)
