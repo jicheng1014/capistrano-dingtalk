@@ -1,5 +1,5 @@
 require 'rest-client'
-require "capistrano/dingtalk/version"
+require_relative "dingtalk/version"
 require 'forwardable'
 
 load File.expand_path("../tasks/dingtalk.rake", __FILE__)
@@ -17,7 +17,7 @@ module Capistrano
       klass = Object
       case category
       when 'text'
-        klass = Dingtalk::Messaging::Text
+        klass = ::Capistrano::Dingtalk::Messaging::Text
       end
       @message = klass.new @config
     end
