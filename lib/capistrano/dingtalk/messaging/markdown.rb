@@ -15,26 +15,6 @@ module Capistrano::Dingtalk::Messaging
       stage: `#{stage}`"
     end
 
-    def markdown_updating
-      "#{deployer} has started deploying branch #{branch} of #{application} to #{stage}"
-    end
-
-    def markdown_reverting
-      "#{deployer} has started rolling back branch #{branch} of #{application} to #{stage}"
-    end
-
-    def markdown_updated
-      "#{deployer} has finished deploying branch #{branch} of #{application} to #{stage}"
-    end
-
-    def markdown_reverted
-      "#{deployer} has finished rolling back branch of #{application} to #{stage}"
-    end
-
-    def markdown_failed
-      "#{deployer} has failed to #{deploying? ? 'deploy' : 'rollback'} branch #{branch} of #{application} to #{stage}"
-    end
-
     ################################################################################
 
     def markdown(action)
@@ -47,14 +27,9 @@ module Capistrano::Dingtalk::Messaging
         msgtype: "markdown",
         markdown: {
           title: message_for(action),
-          text: markdown_for(action)
+          text: markdown_load(action)
         }
       }
-    end
-
-    def markdown_for(action)
-      method = "markdown_for_#{action}"
-      respond_to?(method) && send(method)
     end
   end
 end
