@@ -25,15 +25,15 @@ namespace :dingtalk do
       Capistrano::Dingtalk.new(self).run(:failed)
     end
 
-    desc 'Test Slack integration'
+    desc 'Test dingtalk integration'
     task test: %i[updating updated reverting reverted failed] do
       # all tasks run as dependencies
     end
   end
 end
 
-before 'deploy:updating',           'slack:deploy:updating'
-before 'deploy:reverting',          'slack:deploy:reverting'
-after  'deploy:finishing',          'slack:deploy:updated'
-after  'deploy:finishing_rollback', 'slack:deploy:reverted'
-after  'deploy:failed',             'slack:deploy:failed'
+before 'deploy:updating',           'dingtalk:deploy:updating'
+before 'deploy:reverting',          'dingtalk:deploy:reverting'
+after  'deploy:finishing',          'dingtalk:deploy:updated'
+after  'deploy:finishing_rollback', 'dingtalk:deploy:reverted'
+after  'deploy:failed',             'dingtalk:deploy:failed'
