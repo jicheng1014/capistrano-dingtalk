@@ -30,8 +30,8 @@ module Capistrano
       local = self
       run_locally do
         json = local.message.build_msg_json(action)
+        byebug
         local.send(:send_msg_to_ding_talk, json)
-        local.info "send action #{action} to dingtalk"
       end
     end
 
