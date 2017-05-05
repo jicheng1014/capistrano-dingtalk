@@ -13,7 +13,7 @@ send msg to ding talk webhook rebot when capistrano works.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'capistrano-dingtalk'
+gem 'capistrano-dingtalk', require: false
 ```
 
 Require the library in your application's Capfile:

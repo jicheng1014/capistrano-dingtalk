@@ -13,7 +13,7 @@
 在 Gemfile 中添加
 
 ```ruby
-gem 'capistrano-dingtalk'
+gem 'capistrano-dingtalk', require: false
 ```
 
 在Capfile 中添加
